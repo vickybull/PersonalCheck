@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">个人理财小助手</string>
+    <string name="crime_title_hint">请输入项目名称</string>
+    <string name="crime_title_label">项目名称</string>
+    <string name="crime_details_label">金额</string>
+    <string name="crime_time_label">录入时间</string>
+    <string name="crime_money_hint">请输入金额</string>
+    <string name="crime_time_hint">请点击选择录入时间</string>
+    <string name="type">类型</string>
+    <string name="remark">备注</string>
+    <string name="photo">照片</string>
+    <string name="remark_hint">可以填写备注</string>
+    <string name="add_photo">添加照片</string>
+    <string name="finish">完成</string>
+    <string name="crime_money">现金</string>
+    <string name="crime_card">信用卡</string>
+    <string name="title_activity_crime_pager">CrimePagerActivity</string>
+    <string name="date_picker_title">录入时间</string>
+    <string name="new_crime">New Crime</string>
+    <string name="show_subtitle">显示记录数量</string>
+    <string name="hide_subtitle">隐藏记录数量</string>
+    <string name="subtitle_format">%1$d 条记录</string>
+    <string name="account">账号 测试账号:123</string>
+    <string name="password">密码 测试密码:123</string>
+    <string name="login">登录</string>
+    <string name="show_bill">查看账单统计</string>
+    <string name="time">时间</string>
+</resources>

@@ -33,8 +33,10 @@ public class CrimeFragment extends Fragment {
 
     private static final String ARG_CRIME_ID = "crime_id";
     private static final String DIALOG_DATE = "DialogDate";
+    private static final String DIALOG_TIME = "DialogTime";
     private static final int RESULT_LOAD_IMAGE = 10;
     private static final int REQUEST_DATE = 0;
+    private static final int REQUSET_TIME = 2;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
             "android.permission.READ_EXTERNAL_STORAGE",
@@ -44,6 +46,7 @@ public class CrimeFragment extends Fragment {
     private EditText mTitleField;
     private EditText mMoneyField;
     private Button mDateButton;
+    private Button mTimeButton;
     private RadioButton mCardRadioButton;
     private RadioButton mMoneyRadioButton;
     private EditText mRemark;
@@ -132,6 +135,7 @@ public class CrimeFragment extends Fragment {
             }
         });
         mDateButton = (Button) v.findViewById(R.id.crime_date);
+        mTimeButton = (Button) v.findViewById(R.id.crime_time);
         updateDate();
         mDateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,7 +146,15 @@ public class CrimeFragment extends Fragment {
                 dialog.show(manager, DIALOG_DATE);
             }
         });
-
+        mTimeButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager manager = getFragmentManager();
+                TimePickerFragment dialog = TimePickerFragment.newInstance(mCrime.getDate());
+                dialog.setTargetFragment(CrimeFragment.this, REQUSET_TIME);
+                dialog.show(manager, DIALOG_TIME);
+            }
+        });
         mCardRadioButton = (RadioButton) v.findViewById(R.id.crime_card_cb);
         mMoneyRadioButton = (RadioButton) v.findViewById(R.id.crime_money_cb);
         if (mCrime.isSolved() == true) {
@@ -218,6 +230,13 @@ public class CrimeFragment extends Fragment {
             mCrime.setDate(date);
             updateDate();
         }
+        if (requestCode == REQUSET_TIME)
+
+        {
+            Date date = (Date) data.getSerializableExtra(TimePickerFragment.EXTRA_TIME);
+            mCrime.setDate(date);
+            updateDate();
+        }
 
     }
 
@@ -226,9 +245,9 @@ public class CrimeFragment extends Fragment {
         calendar.setTime(mCrime.getDate());
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         int min = calendar.get(Calendar.MINUTE);
-        int sec = calendar.get(Calendar.SECOND);
 
         mDateButton.setText("" + calendar.get(Calendar.YEAR) + '年' + (calendar.get(Calendar.MONTH) + 1) + '月' + calendar.get(Calendar.DAY_OF_MONTH) + '日');
+        mTimeButton.setText(""+hour+'时'+min+'分');
     }
 
     public void returnResult() {

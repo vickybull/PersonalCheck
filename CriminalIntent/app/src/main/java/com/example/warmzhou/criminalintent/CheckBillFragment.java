@@ -243,7 +243,7 @@ public class CheckBillFragment extends Fragment {
         }
         ArrayList<PieEntry> entrys = new ArrayList<PieEntry>();
         for (int i = 0; i < number.length; i++) {
-            entrys.add(new PieEntry(number[i], titles.get(i)));
+            entrys.add(new PieEntry((0-number[i]), titles.get(i)));
         }
         PieDataSet dataSet = new PieDataSet(entrys,"消费概览");
         dataSet.setSliceSpace(3f);
